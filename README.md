@@ -65,3 +65,33 @@ async function testAsync() {
 const res = testAsync();
 console.log(res); // Promise { 'Hello world' }
 ```
+
+### get 请求接收 
+
+在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。
+- query: 返回的是格式化好的参数对象
+- querystring: 返回的是请求字符串
+
+```
+http://127.0.0.1:3000/?user=wangyi&age=12
+
+
+{"url":"/?user=wangyi&age=12","req_query":{"user":"wangyi","age":"12"},"req_querystring":"user=wangyi&age=12"}
+```
+
+> 从request接受Get请求
+
+```
+let url = ctx.url;
+let request = ctx.request;
+let req_query = request.query;
+let req_querystring = request.querystring;
+```
+
+> 从上下文直接获取get请求
+
+```
+let ctx_query = ctx.query;
+let ctx_querystring = ctx.querystring;
+
+```
