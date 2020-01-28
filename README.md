@@ -66,7 +66,7 @@ const res = testAsync();
 console.log(res); // Promise { 'Hello world' }
 ```
 
-### get 请求接收 
+### 03get 请求接收 
 
 在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。
 - query: 返回的是格式化好的参数对象
@@ -95,3 +95,20 @@ let ctx_query = ctx.query;
 let ctx_querystring = ctx.querystring;
 
 ```
+
+### 04 接受post请求 （1）
+
+获取Post请求的步骤：
+- 1.解析上下文ctx中原生node.js对象req
+- 2.将POST表单数据解析成query string- 字符串（例如：user=jsA&age=124)
+- 3.将字符串转换成JSON格式 
+
+ctx.request和ctx.req的区别
+
+- ctx.request: 是Koa2中context经过封装的请求对象，直观简单
+- ctx.req： 是context提供的node.js原生HTTP请求对象，不直观，但是可以得到更多的内容，适合深度编程
+
+ctx.method 得到的请求类型
+ 
+ Koa2提供了ctx.method属性，可以容易得到请求的类型，举例：根据请求类型获得不同的页面内容。
+ GET请求得到表单填写页面，POST请求时候，得到POST处理页面
