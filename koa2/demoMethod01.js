@@ -16,11 +16,45 @@ app.use(async(ctx) => {
 		`
 		ctx.body = html;
 	}else if (ctx.url === '/' && ctx.method === 'POST') {
-		ctx.body = '接受到post参数';
+		let postdata = await parsePostData(ctx);
+		// ctx.body = '接受到post参数';
+		ctx.body = postdata;
 	}else {
 		ctx.body = `<h1>404</>`;
 	}
 });
+
+// 01 ctx node.js原生对象req 解析
+function parsePostData(ctx){
+	return  new Promise((resolve, reject) => {
+		try{
+			let postdata = "";
+			ctx.req.on('data', (data) => {
+				postdata+=data;
+			})
+			ctx.req.addListener('end', function () {
+				let parseData = parseQueryStr(postdata);
+				resolve(parseData);
+			})
+		}catch(error){
+			reject(error);
+		}
+	})
+};
+
+// 02 POST字符串解析JSON对象
+
+function parseQueryStr(queryStr){
+	let queryData = {};
+	let queryStrList = queryStr.split('&');
+	console.log(queryStrList, 'queryStrList');
+	for(let [index, queryStr] of queryStrList.entries()) {
+		let itemList = queryStr.split('=');
+		console.log(itemList,'itemList');
+		queryData[itemList[0]] = decodeURIComponent(itemList[1]);
+	}
+	return queryData;
+}
 
 app.listen(3000, () => {
 	console.log("app start port is 3000");

@@ -112,3 +112,46 @@ ctx.method 得到的请求类型
  
  Koa2提供了ctx.method属性，可以容易得到请求的类型，举例：根据请求类型获得不同的页面内容。
  GET请求得到表单填写页面，POST请求时候，得到POST处理页面
+ 
+ ### 05 接受POST请求02
+ 
+ ```
+ 01） node.js 原生接收 ctx.req
+ 
+ function parsePostData(ctx){
+ 	return  new Promise((resolve, reject) => {
+ 		try{
+ 			let postdata = "";
+ 			ctx.req.on('data', (data) => {
+ 				postdata+=data;
+ 			});
+ 			ctx.req.addListener('end', function () {
+ 				resolve(postdata);
+ 			})
+ 		}catch(error){
+ 			reject(error);
+ 		}
+ 	})
+ }
+ 
+ 
+ 
+ 结果： username=12141124&age=12&website=123
+ 
+ ```
+ 
+ ```
+ 2) 3)
+ function parseQueryStr(queryStr) {
+	 let queryData = {};
+	 let queryStringList = queryStr.split('&');
+	 console.log(quertStringList);
+	 for(let [index, queryStr] of queryStrList.entries()){
+		 let itemList = queryStr.split('=');
+		 console.log(itemList);
+		 queryData[itemList[0]] = decodeURIComponent(itemList[1]);
+	 }
+	 return queryData;
+ }
+ 
+ ```
