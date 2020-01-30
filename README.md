@@ -179,3 +179,22 @@ koa-bodyparser（简化post上述的功能插件）
 - 打开端口测试
 
 ### 07原生路由实现
+
+```
+举例demo
+http://127.0.0.1:3000
+页面： /
+
+http://127.0.0.1:3000/js
+
+页面： /js
+```
+建立page文件夹  404.html index.html todo.html
+
+```
+demoUrl.js
+
+实现route方法， render方法
+引入
+const fs = require('fs');
+```
