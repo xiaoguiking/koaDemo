@@ -142,6 +142,15 @@ ctx.method 得到的请求类型
  
  ```
  2) 3)
+ username=12141124&age=12&website=123  将这个修改 
+	 JSON 对象
+	 
+	 {
+	 "username": "123",
+	 "age": "213",
+	 "website": "123123"
+	 }
+	 
  function parseQueryStr(queryStr) {
 	 let queryData = {};
 	 let queryStringList = queryStr.split('&');
@@ -155,3 +164,18 @@ ctx.method 得到的请求类型
  }
  
  ```
+ 
+ 
+ ### 06中间件使用
+
+koa-bodyparser（简化post上述的功能插件）
+
+- 安装中间件 生产环境使用
+`npm install --save koa-bodyparser@3`
+- 安装完成后，需要在代码中引入并使用。我们在代码顶部用require进行引入。
+`const bodyParser = require('koa-bodyparser');` 
+- 使用中间件
+`app.use(bodyParser())`
+- 打开端口测试
+
+### 07原生路由实现

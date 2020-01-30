@@ -45,8 +45,8 @@ function parsePostData(ctx){
 // 02 POST字符串解析JSON对象
 
 function parseQueryStr(queryStr){
-	let queryData = {};
-	let queryStrList = queryStr.split('&');
+	let queryData = {};  //  提供一个空对象
+	let queryStrList = queryStr.split('&');  // 字符串转换成数组
 	console.log(queryStrList, 'queryStrList');
 	for(let [index, queryStr] of queryStrList.entries()) {
 		let itemList = queryStr.split('=');
