@@ -198,3 +198,36 @@ demoUrl.js
 引入
 const fs = require('fs');
 ```
+
+### 08 koa-router 中间件
+
+- 安装koa-router 中间件
+`npm install --save koa-router`
+
+```
+eg demo
+
+const Koa = require('koa');
+const Router = require('koa-router');  // 引入声明
+
+const app = new Koa();
+const router = new Router();  使用
+
+router
+	.get('/', (ctx, next) => {
+	ctx.body = 'Hello js';
+})
+	.get('/todo', (ctx, next) => {
+		ctx.body = 'todo page';
+	})
+
+app
+	.use(router.routes())
+	.use(router.allowedMethods());
+
+
+
+app.listen(3000, () => {
+	console.log('demoRoute start is port 3000');
+})
+```
