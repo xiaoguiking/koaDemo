@@ -256,3 +256,15 @@ http://127.0.0.1:3000/page/todo			Page todo page
 ```
 
 
+### 10 Koa-router中间件3
+
+如何接受传递参数？
+127.0.0.1/3000?name=js&age=34
+
+```
+本章介绍 get 请求
+ctx.body  = ctx.query
+
+{"name":"12","age":"12"}
+
+```
