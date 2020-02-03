@@ -199,7 +199,7 @@ demoUrl.js
 const fs = require('fs');
 ```
 
-### 08 koa-router 中间件
+### 08 koa-router 中间件01
 
 - 安装koa-router 中间件
 `npm install --save koa-router`
@@ -231,3 +231,28 @@ app.listen(3000, () => {
 	console.log('demoRoute start is port 3000');
 })
 ```
+
+### 09 koa-router 中间件02 层级处理
+
+demoRouter01.js
+```
+const router = new Router({
+	prefix:'/jsKnow'
+});
+
+加入层级 之后效果
+http://127.0.0.1:3000/jsKnow/  ---------------  Hello js
+
+http://127.0.0.1:3000/jsKnow/todo --------------  todo page
+```
+
+>  分级加载不同的子孙路由
+
+```
+http://127.0.0.1:3000/home/js           Home js page
+http://127.0.0.1:3000/page/todo			Home todo page
+http://127.0.0.1:3000/page/js			Page js page
+http://127.0.0.1:3000/page/todo			Page todo page
+```
+
+
