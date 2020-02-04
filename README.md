@@ -323,4 +323,21 @@ app.listen(3000,()=>{
 })
 ```
 
-### 12
+### 12.Koa2模板引擎ejs
+
+安装模板机制中间件
+
+> cnpm install --save koa-views
+
+安装ejs模板引擎
+
+>  npm install  --save ejs
+
+**编写模板**
+
+-  建立view文件夹，创建index.ejs
+-  
+
+> while compiling ejs    If the above error is not helpful, you may want to try EJS-Lint:    ejs  渲染错误
+
+解决方案：  主要是index.ejs  文件夹里面写了注释 ，或者变量（字面量写的有问题）查看修改
